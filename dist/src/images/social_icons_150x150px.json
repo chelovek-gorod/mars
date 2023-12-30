@@ -1,0 +1,93 @@
+{"frames": {
+
+"social_facebook.png":
+{
+	"frame": {"x":1,"y":1,"w":150,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+	"sourceSize": {"w":150,"h":150},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"social_instagram.png":
+{
+	"frame": {"x":1,"y":153,"w":150,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+	"sourceSize": {"w":150,"h":150},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"social_link.png":
+{
+	"frame": {"x":1,"y":305,"w":150,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+	"sourceSize": {"w":150,"h":150},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"social_odnoklasniki.png":
+{
+	"frame": {"x":153,"y":1,"w":150,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+	"sourceSize": {"w":150,"h":150},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"social_telegram.png":
+{
+	"frame": {"x":305,"y":1,"w":150,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+	"sourceSize": {"w":150,"h":150},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"social_twitter.png":
+{
+	"frame": {"x":153,"y":153,"w":150,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+	"sourceSize": {"w":150,"h":150},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"social_viber.png":
+{
+	"frame": {"x":153,"y":305,"w":150,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+	"sourceSize": {"w":150,"h":150},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"social_vkontakte.png":
+{
+	"frame": {"x":305,"y":153,"w":150,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+	"sourceSize": {"w":150,"h":150},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"social_whatsapp.png":
+{
+	"frame": {"x":305,"y":305,"w":150,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+	"sourceSize": {"w":150,"h":150},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "social_icons_150x150px.png",
+	"format": "RGBA8888",
+	"size": {"w":456,"h":456},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:fa87301c712cc5beebd9ffab9247f386:da726f7f21b40889ff9388dd56725c52:cd3c361d8250b693da35fc97f9f63f6c$"
+}
+}

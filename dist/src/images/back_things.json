@@ -1,0 +1,68 @@
+{"frames": {
+
+"box.png":
+{
+	"frame": {"x":1,"y":359,"w":146,"h":107},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":146,"h":107},
+	"sourceSize": {"w":146,"h":107}
+},
+"deimos.png":
+{
+	"frame": {"x":248,"y":359,"w":20,"h":20},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":20},
+	"sourceSize": {"w":20,"h":20}
+},
+"phobos.png":
+{
+	"frame": {"x":248,"y":391,"w":50,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":40},
+	"sourceSize": {"w":50,"h":40}
+},
+"manipulator.png":
+{
+	"frame": {"x":1,"y":1,"w":272,"h":356},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":272,"h":356},
+	"sourceSize": {"w":272,"h":356}
+},
+"solar_panels.png":
+{
+	"frame": {"x":275,"y":1,"w":161,"h":215},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":161,"h":215},
+	"sourceSize": {"w":161,"h":215}
+},
+"star_106x106px.png":
+{
+	"frame": {"x":149,"y":359,"w":97,"h":97},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":97,"h":97},
+	"sourceSize": {"w":106,"h":106}
+},
+"transport.png":
+{
+	"frame": {"x":275,"y":218,"w":166,"h":171},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":166,"h":171},
+	"sourceSize": {"w":166,"h":171}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "back_things.png",
+	"format": "RGBA8888",
+	"size": {"w":442,"h":467},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:21c0affd416a92265e271cfbe39fc92e:46c7ff52985732da6802bccfa9939184:0e3a786aee4a6b6383cfbda68669170b$"
+}
+}

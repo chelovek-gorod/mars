@@ -1,0 +1,55 @@
+{"frames": {
+
+"port1.png":
+{
+	"frame": {"x":1,"y":1,"w":416,"h":586},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":157,"y":0,"w":416,"h":586},
+	"sourceSize": {"w":592,"h":586}
+},
+"port2.png":
+{
+	"frame": {"x":141,"y":808,"w":263,"h":217},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":304,"w":263,"h":217},
+	"sourceSize": {"w":592,"h":586}
+},
+"port3.png":
+{
+	"frame": {"x":141,"y":589,"w":264,"h":217},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":165,"y":213,"w":264,"h":217},
+	"sourceSize": {"w":592,"h":586}
+},
+"port4.png":
+{
+	"frame": {"x":1,"y":1027,"w":262,"h":218},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":330,"y":129,"w":262,"h":218},
+	"sourceSize": {"w":592,"h":586}
+},
+"rocket.png":
+{
+	"frame": {"x":1,"y":589,"w":138,"h":427},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":138,"h":427},
+	"sourceSize": {"w":138,"h":428}
+}},
+"animations": {
+	"port": ["port1.png","port2.png","port3.png","port4.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "port.png",
+	"format": "RGBA8888",
+	"size": {"w":418,"h":1246},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:40fb529a67d91ce94bc6edf5e2512614:7ee172a63d2793f91e10245a2a088481:39339c28366e30509680cc03468a7566$"
+}
+}

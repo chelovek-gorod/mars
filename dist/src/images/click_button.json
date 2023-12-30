@@ -1,0 +1,28 @@
+{"frames": {
+
+"button_off.png":
+{
+	"frame": {"x":1,"y":1,"w":400,"h":372},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":372},
+	"sourceSize": {"w":400,"h":372}
+},
+"button_on.png":
+{
+	"frame": {"x":403,"y":1,"w":400,"h":372},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":372},
+	"sourceSize": {"w":400,"h":372}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "click_button.png",
+	"format": "RGBA8888",
+	"size": {"w":804,"h":374},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a864274b770c8d7e1ba52c7dda70871b:37a18e2e943fcac59ae84b537a5c9781:26a059556fcc016cad48a1b9cc864bef$"
+}
+}

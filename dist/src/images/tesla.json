@@ -1,0 +1,36 @@
+{"frames": {
+
+"tesla_ball.png":
+{
+	"frame": {"x":277,"y":407,"w":154,"h":153},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":154,"h":153},
+	"sourceSize": {"w":154,"h":153}
+},
+"tesla_base.png":
+{
+	"frame": {"x":1,"y":1,"w":404,"h":434},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":404,"h":434},
+	"sourceSize": {"w":404,"h":434}
+},
+"tesla_ring.png":
+{
+	"frame": {"x":1,"y":407,"w":274,"h":172},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":274,"h":172},
+	"sourceSize": {"w":274,"h":172}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "tesla.png",
+	"format": "RGBA8888",
+	"size": {"w":436,"h":580},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ae03f4b7bdce366e9d75645b532d690e:aee2a680342b1d65a090831764a275bf:6d6e32951b6c1c19416021451aad90f9$"
+}
+}
