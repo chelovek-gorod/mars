@@ -40,6 +40,14 @@
 	"spriteSourceSize": {"x":177,"y":47,"w":102,"h":285},
 	"sourceSize": {"w":485,"h":544}
 },
+"factory_empty.png":
+{
+	"frame": {"x":488,"y":512,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":485,"h":544}
+},
 "factory_gold.png":
 {
 	"frame": {"x":932,"y":512,"w":38,"h":38},
@@ -66,6 +74,6 @@
 	"format": "RGBA8888",
 	"size": {"w":974,"h":650},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:5259e40d7c840340471c0e802d3ea6dd:4dda658ee2dd07eeaffa4a2b3cb07302:6f709d966622fc1b6c5e4025e33ed04a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:a6d3ad4aad6ab746cec718f7bd9c543d:963040d2a02ddf4a2e04eca26ff46569:6f709d966622fc1b6c5e4025e33ed04a$"
 }
 }

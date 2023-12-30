@@ -2,6 +2,8 @@ import { Application, Container } from 'pixi.js'
 import { playMusic, stopMusic } from './sound'
 import { screenResize } from './events'
 
+const containerSize = 1920
+
 const app = new Application({
     background: 0x000000,
     antialias: true, // сглаживание
@@ -21,6 +23,7 @@ function resize() {
     appScreen.minSize = app.screen.width > app.screen.height ? app.screen.height : app.screen.width
     appScreen.offsetX = (appScreen.width - appScreen.minSize) / 2
     appScreen.offsetY = (appScreen.height - appScreen.minSize) / 2
+    appScreen.scaleRate = appScreen.minSize / containerSize 
 
     screenResize( appScreen )
 }

@@ -24,6 +24,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const containerSize = 1920
+
 const app = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Application({
     background: 0x000000,
     antialias: true, // сглаживание
@@ -43,6 +45,7 @@ function resize() {
     appScreen.minSize = app.screen.width > app.screen.height ? app.screen.height : app.screen.width
     appScreen.offsetX = (appScreen.width - appScreen.minSize) / 2
     appScreen.offsetY = (appScreen.height - appScreen.minSize) / 2
+    appScreen.scaleRate = appScreen.minSize / containerSize 
 
     ;(0,_events__WEBPACK_IMPORTED_MODULE_2__.screenResize)( appScreen )
 }
@@ -224,6 +227,123 @@ class Background extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Container {
 
 /***/ }),
 
+/***/ "./dev_js/battery.js":
+/*!***************************!*\
+  !*** ./dev_js/battery.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/lib/index.mjs");
+/* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./application */ "./dev_js/application.js");
+/* harmony import */ var _loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loader */ "./dev_js/loader.js");
+/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./events */ "./dev_js/events.js");
+
+
+
+
+
+const settings = {
+    positionsRate: [{x: -690, y: 944}, {x: 668, y: 312}],
+    levels: [1, 0],
+    maxLevel: 4,
+}
+
+class Battery extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite {
+    constructor( screenData, index ) {
+        super( _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.battery.textures[`battery${settings.levels[index]}.png`] )
+        this.anchor.set(0.5, 1)
+
+        this.point = {...settings.positionsRate[index]}
+
+        this.level = settings.levels[index]
+
+        this.screenResize( screenData )
+        _events__WEBPACK_IMPORTED_MODULE_3__.EventHub.on( _events__WEBPACK_IMPORTED_MODULE_3__.events.screenResize, this.screenResize.bind(this) )
+
+        this.eventMode = 'static'
+        this.on('pointertap', this.getClick.bind(this) )
+    }
+
+    screenResize(screenData) {
+        this.scale.set(screenData.scaleRate)
+        this.position.x = screenData.centerX + this.point.x * screenData.scaleRate
+        this.position.y = screenData.centerY + this.point.y * screenData.scaleRate
+    }
+
+    getClick() {
+        if (this.level < settings.maxLevel) {
+            this.level++
+            this.texture = _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.battery.textures[`battery${this.level}.png`]
+        }
+    }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Battery);
+
+/***/ }),
+
+/***/ "./dev_js/chargerButton.js":
+/*!*********************************!*\
+  !*** ./dev_js/chargerButton.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/lib/index.mjs");
+/* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./application */ "./dev_js/application.js");
+/* harmony import */ var _loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loader */ "./dev_js/loader.js");
+/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./events */ "./dev_js/events.js");
+
+
+
+
+
+const settings = {
+    positionRateY: 906,
+}
+
+class ChargerButton extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite {
+    constructor( screenData ) {
+        super( _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.button.textures["button_off.png"] )
+        this.anchor.set(0.5, 1)
+
+        this.screenResize( screenData )
+        _events__WEBPACK_IMPORTED_MODULE_3__.EventHub.on( _events__WEBPACK_IMPORTED_MODULE_3__.events.screenResize, this.screenResize.bind(this) )
+
+        this.eventMode = 'static'
+        //this.on('pointertap', this.getClick.bind(this) )
+        this.on('pointerdown', this.getClickOn.bind(this))
+        this.on('pointerup', this.getClickOff.bind(this))
+        this.on('pointerupoutside', this.getClickOff.bind(this))
+    }
+
+    screenResize(screenData) {
+        this.scale.set(screenData.scaleRate)
+        this.position.x = screenData.centerX
+        this.position.y = screenData.centerY + settings.positionRateY * screenData.scaleRate
+    }
+
+    getClickOn() {
+        this.texture = _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.button.textures["button_on.png"]
+    }
+    getClickOff() {
+        this.texture = _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.button.textures["button_off.png"]
+    }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChargerButton);
+
+/***/ }),
+
 /***/ "./dev_js/decoder.js":
 /*!***************************!*\
   !*** ./dev_js/decoder.js ***!
@@ -332,6 +452,74 @@ EventHub.on( events.eventKey, ( event ) => {
 */
 
 
+
+/***/ }),
+
+/***/ "./dev_js/factory.js":
+/*!***************************!*\
+  !*** ./dev_js/factory.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/lib/index.mjs");
+/* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./application */ "./dev_js/application.js");
+/* harmony import */ var _loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loader */ "./dev_js/loader.js");
+/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./events */ "./dev_js/events.js");
+
+
+
+
+
+const settings = {
+    pipePositions: [{x: 0, y: 0}, {x: 0, y: 0}, {x: 4, y: -276}, {x: -48, y: -320}, {x: 300, y: 300}],
+    positionsRate: [{x: 668, y: 944}, {x: 124, y: 186}],
+    levels: [1, 0],
+    maxLevel: 4,
+}
+
+class Factory extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite {
+    constructor( screenData, index ) {
+        super( _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.factory.textures["factory_empty.png"] )
+        this.anchor.set(0.5, 1)
+        this.level = settings.levels[index]
+        this.base = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite(_loader__WEBPACK_IMPORTED_MODULE_2__.sprites.factory.textures[`factory_${this.level}.png`])
+        this.base.anchor.set(0.5, 1)
+        this.addChild( this.base )
+
+        this.point = {...settings.positionsRate[index]}
+
+        this.screenResize( screenData )
+        _events__WEBPACK_IMPORTED_MODULE_3__.EventHub.on( _events__WEBPACK_IMPORTED_MODULE_3__.events.screenResize, this.screenResize.bind(this) )
+
+        this.eventMode = 'static'
+        this.on('pointertap', this.getClick.bind(this) )
+    }
+
+    screenResize(screenData) {
+        this.scale.set(screenData.scaleRate)
+        this.position.x = screenData.centerX + this.point.x * screenData.scaleRate
+        this.position.y = screenData.centerY + this.point.y * screenData.scaleRate
+    }
+
+    getClick() {
+        if (this.level < settings.maxLevel) {
+            this.level++
+            if (this.level === 1) this.base.texture = _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.factory.textures["factory_1.png"]
+            else {
+                let pipe = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite( _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.factory.textures[`factory_${this.level}.png`] )
+                pipe.anchor.set(0.5, 1)
+                this.addChildAt( pipe, 0 )
+            }
+        }
+    }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Factory);
 
 /***/ }),
 
@@ -673,6 +861,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _decoder__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./decoder */ "./dev_js/decoder.js");
 /* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./state */ "./dev_js/state.js");
 /* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./events */ "./dev_js/events.js");
+/* harmony import */ var _chargerButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./chargerButton */ "./dev_js/chargerButton.js");
+/* harmony import */ var _battery__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./battery */ "./dev_js/battery.js");
+/* harmony import */ var _tesla__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./tesla */ "./dev_js/tesla.js");
+/* harmony import */ var _factory__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./factory */ "./dev_js/factory.js");
+/* harmony import */ var _miner__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./miner */ "./dev_js/miner.js");
+/* harmony import */ var _port__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./port */ "./dev_js/port.js");
+
+
+
+
+
+
 
 
 
@@ -695,6 +895,33 @@ function startGame() {
 
     let bg = new _background__WEBPACK_IMPORTED_MODULE_1__["default"](screenData)
     let screenLayer = new _application__WEBPACK_IMPORTED_MODULE_0__.Layer( bg )
+
+    let port = new _port__WEBPACK_IMPORTED_MODULE_12__["default"](screenData)
+    screenLayer.addChild(port)
+
+    let factory1 = new _factory__WEBPACK_IMPORTED_MODULE_10__["default"](screenData, 1)
+    screenLayer.addChild(factory1)
+
+    let battery1 = new _battery__WEBPACK_IMPORTED_MODULE_8__["default"](screenData, 1)
+    screenLayer.addChild(battery1)
+
+    let miner0 = new _miner__WEBPACK_IMPORTED_MODULE_11__["default"](screenData, 0)
+    screenLayer.addChild(miner0)
+
+    let tesla = new _tesla__WEBPACK_IMPORTED_MODULE_9__["default"](screenData)
+    screenLayer.addChild(tesla)
+
+    let miner1 = new _miner__WEBPACK_IMPORTED_MODULE_11__["default"](screenData, 1)
+    screenLayer.addChild(miner1)
+
+    let battery0 = new _battery__WEBPACK_IMPORTED_MODULE_8__["default"](screenData, 0)
+    screenLayer.addChild(battery0)
+
+    let button = new _chargerButton__WEBPACK_IMPORTED_MODULE_7__["default"](screenData)
+    screenLayer.addChild(button)
+
+    let factory0 = new _factory__WEBPACK_IMPORTED_MODULE_10__["default"](screenData, 0)
+    screenLayer.addChild(factory0)
 
     /*
     smoothShowElement( new Layer( new Background(screenData) ) , 'center', () => {
@@ -735,8 +962,6 @@ const paths = {
 }
 
 const sprites = {
-    screen: 'screen_320x280px.png',
-    test: 'test_120x120px.png',
     backThings: 'back_things.json',
     battery: 'battery.json',
     button: 'click_button.json',
@@ -753,7 +978,7 @@ const sprites = {
     social: 'social_icons_150x150px.json',
     soil: 'soil_113x91px.png',
     space: 'space_bg_tile_800x800px.jpg',
-    tesla: 'tesla.json',
+    tesla: 'tesla_tower.json',
 }
 const spritesNumber = Object.keys(sprites).length
 for (let sprite in sprites) sprites[sprite] = paths.sprites + sprites[sprite]
@@ -945,6 +1170,144 @@ function removeLoadingBar() {
 
 /***/ }),
 
+/***/ "./dev_js/miner.js":
+/*!*************************!*\
+  !*** ./dev_js/miner.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/lib/index.mjs");
+/* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./application */ "./dev_js/application.js");
+/* harmony import */ var _loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loader */ "./dev_js/loader.js");
+/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./events */ "./dev_js/events.js");
+
+
+
+
+
+const settings = {
+    minePositions: [{x: 0, y: 0}, {x: 0, y: 0}, {x: 4, y: -276}, {x: -48, y: -320}, {x: 300, y: 300}],
+    positionsRate: [{x: -386, y: 642}, {x: 402, y: 536}],
+    levels: [1, 0],
+    maxLevel: 4,
+}
+
+class Miner extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite {
+    constructor( screenData, index ) {
+        super( _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.miner.textures["miner_empty.png"] )
+        this.anchor.set(0.5, 1)
+        this.level = settings.levels[index]
+        let miner = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite(_loader__WEBPACK_IMPORTED_MODULE_2__.sprites.miner.textures[`miner_${this.level}.png`])
+        miner.anchor.set(0.5, 1)
+        this.addChild(miner)
+
+        this.point = {...settings.positionsRate[index]}
+
+        this.screenResize( screenData )
+        _events__WEBPACK_IMPORTED_MODULE_3__.EventHub.on( _events__WEBPACK_IMPORTED_MODULE_3__.events.screenResize, this.screenResize.bind(this) )
+
+        this.eventMode = 'static'
+        this.on('pointertap', this.getClick.bind(this) )
+    }
+
+    screenResize(screenData) {
+        this.scale.set(screenData.scaleRate)
+        this.position.x = screenData.centerX + this.point.x * screenData.scaleRate
+        this.position.y = screenData.centerY + this.point.y * screenData.scaleRate
+    }
+
+    getClick() {
+        if (this.level < settings.maxLevel) {
+            this.level++
+            if (this.level === 1) {
+                this.children[0].texture = _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.miner.textures["miner_1.png"]
+            } else {
+                let miner = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite(_loader__WEBPACK_IMPORTED_MODULE_2__.sprites.miner.textures[`miner_${this.level}.png`])
+                miner.anchor.set(0.5, 1)
+                switch(this.level) {
+                    case 2 : this.addChildAt(miner, 0); break;
+                    case 3 : this.addChildAt(miner, 2); break;
+                    case 4 : this.addChildAt(miner, 0); break;
+                }
+            }
+        }
+    }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Miner);
+
+/***/ }),
+
+/***/ "./dev_js/port.js":
+/*!************************!*\
+  !*** ./dev_js/port.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/lib/index.mjs");
+/* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./application */ "./dev_js/application.js");
+/* harmony import */ var _loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loader */ "./dev_js/loader.js");
+/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./events */ "./dev_js/events.js");
+
+
+
+
+
+const settings = {
+    rocketPositions: [{x: 0, y: 0}, {x: 0, y: 0}, {x: 4, y: -276}, {x: -48, y: -320}],
+    positionRate: {x: -606, y: 346},
+    maxLevel: 4,
+}
+
+class Port extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite {
+    constructor( screenData ) {
+        super( _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.port.textures["port0.png"] )
+        this.anchor.set(0.5, 1)
+        this.level = 1
+
+        let port = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite(_loader__WEBPACK_IMPORTED_MODULE_2__.sprites.port.textures["port1.png"])
+        port.anchor.set(0.5, 1)
+        this.addChildAt( port, 0 )
+
+        this.point = {...settings.positionRate}
+
+        this.screenResize( screenData )
+        _events__WEBPACK_IMPORTED_MODULE_3__.EventHub.on( _events__WEBPACK_IMPORTED_MODULE_3__.events.screenResize, this.screenResize.bind(this) )
+
+        this.eventMode = 'static'
+        this.on('pointertap', this.getClick.bind(this) )
+    }
+
+    screenResize(screenData) {
+        this.scale.set(screenData.scaleRate)
+        this.position.x = screenData.centerX + this.point.x * screenData.scaleRate
+        this.position.y = screenData.centerY + this.point.y * screenData.scaleRate
+    }
+
+    getClick() {
+        if (this.level < settings.maxLevel) {
+            this.level++
+            let port = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite(_loader__WEBPACK_IMPORTED_MODULE_2__.sprites.port.textures[`port${this.level}.png`])
+            port.anchor.set(0.5, 1)
+            this.addChildAt( port, 0 )
+        }
+    }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Port);
+
+/***/ }),
+
 /***/ "./dev_js/sound.js":
 /*!*************************!*\
   !*** ./dev_js/sound.js ***!
@@ -1062,6 +1425,88 @@ function initState() {
     if (STATE === null) STATE = new State()
     return STATE
 }
+
+/***/ }),
+
+/***/ "./dev_js/tesla.js":
+/*!*************************!*\
+  !*** ./dev_js/tesla.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/lib/index.mjs");
+/* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./application */ "./dev_js/application.js");
+/* harmony import */ var _loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loader */ "./dev_js/loader.js");
+/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./events */ "./dev_js/events.js");
+
+
+
+
+
+const settings = {
+    ringPositionsY: [-260],
+    ballPositionsY: [-320],
+    positionStep: -37,
+    maxLevel: 5,
+    positionRate: {x: -28, y: 520},
+    tap: {x: -28, y: 260, radius: 200},
+}
+for (let i = 0; i < settings.maxLevel; i++) {
+    settings.ringPositionsY.push( settings.ringPositionsY[i] + settings.positionStep )
+    settings.ballPositionsY.push( settings.ballPositionsY[i] + settings.positionStep )
+}
+
+class Tesla extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite {
+    constructor( screenData ) {
+        super( _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.tesla.textures["base.png"] )
+        this.anchor.set(0.5, 1)
+        this.level = 0
+
+        this.ball = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite( _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.tesla.textures["ball.png"] )
+        this.ball.anchor.set(0.5)
+        this.ball.position.y = settings.ballPositionsY[this.level]
+        this.addChild( this.ball )
+
+        let ring = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite( _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.tesla.textures["ring.png"] )
+        ring.anchor.set(0.5)
+        ring.position.y = settings.ringPositionsY[this.level]
+        this.addChildAt( ring, 0 )
+
+        this.screenResize( screenData )
+        _events__WEBPACK_IMPORTED_MODULE_3__.EventHub.on( _events__WEBPACK_IMPORTED_MODULE_3__.events.screenResize, this.screenResize.bind(this) )
+
+        this.eventMode = 'static'
+        this.on('pointertap', this.getClick.bind(this) )
+    }
+
+    screenResize(screenData) {
+        this.scale.set(screenData.scaleRate)
+        this.position.x = screenData.centerX + settings.positionRate.x * screenData.scaleRate
+        this.position.y = screenData.centerY + settings.positionRate.y * screenData.scaleRate
+    }
+
+    getClick() {
+        if (this.level < settings.maxLevel) {
+            this.level++
+
+            let ring = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite( _loader__WEBPACK_IMPORTED_MODULE_2__.sprites.tesla.textures["ring.png"] )
+            ring.anchor.set(0.5)
+            ring.position.y = settings.ringPositionsY[this.level]
+            this.addChild( ring )
+
+            this.removeChild(this.ball)
+            this.ball.position.y = settings.ballPositionsY[this.level]
+            this.addChild( this.ball )
+        }
+    }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Tesla);
 
 /***/ }),
 

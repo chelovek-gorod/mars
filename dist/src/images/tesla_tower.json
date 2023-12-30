@@ -1,0 +1,36 @@
+{"frames": {
+
+"ball.png":
+{
+	"frame": {"x":173,"y":273,"w":80,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80}
+},
+"base.png":
+{
+	"frame": {"x":1,"y":1,"w":250,"h":270},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":270},
+	"sourceSize": {"w":250,"h":270}
+},
+"ring.png":
+{
+	"frame": {"x":1,"y":273,"w":170,"h":106},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":170,"h":106},
+	"sourceSize": {"w":170,"h":106}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "tesla_tower.png",
+	"format": "RGBA8888",
+	"size": {"w":254,"h":380},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:62a4c336c5b710bb954ec51800fea487:9c728fa12fb36cd71990529b811419c4:71429532c3c41002704a4245048926e4$"
+}
+}

@@ -9,8 +9,6 @@ const paths = {
 }
 
 export const sprites = {
-    screen: 'screen_320x280px.png',
-    test: 'test_120x120px.png',
     backThings: 'back_things.json',
     battery: 'battery.json',
     button: 'click_button.json',
@@ -27,7 +25,7 @@ export const sprites = {
     social: 'social_icons_150x150px.json',
     soil: 'soil_113x91px.png',
     space: 'space_bg_tile_800x800px.jpg',
-    tesla: 'tesla.json',
+    tesla: 'tesla_tower.json',
 }
 const spritesNumber = Object.keys(sprites).length
 for (let sprite in sprites) sprites[sprite] = paths.sprites + sprites[sprite]
